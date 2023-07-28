@@ -1,11 +1,11 @@
-import styleText from "data-text:./google-urls-styles.css";
+import styleText from "data-text:./google-results-styles.css";
 import type { PlasmoCSConfig } from "plasmo";
 
 import { Storage } from "@plasmohq/storage";
 
-import { StorageKey } from "../lib/storageKey";
-import { getUrlsFromParticipantsData } from "../services/participantsData";
-import type { participantsDataType } from "../types/participantsData";
+import { StorageKey } from "@/lib/storageKey";
+import { getUrlsFromParticipantsData } from "@/services/participantsData";
+import type { participantsDataType } from "@/types/participantsData";
 
 const GOOGLE_RESULTS_SELECTOR = ".MjjYud";
 const GIVE_FREELY_PARTICIPANT_CLASS = "give-freely-participant";
@@ -25,7 +25,7 @@ async function addCssClassesToGoogleResults() {
   const participantsData: participantsDataType = await storage.get(
     StorageKey.ParticipantsData
   );
-  
+
   const urls = getUrlsFromParticipantsData(participantsData);
   const participatingLink = document.querySelectorAll(
     urls.map((url) => `a[href*="${url}"]`).join(", ")
@@ -39,7 +39,6 @@ async function addCssClassesToGoogleResults() {
       closestGoogleResult.classList.add(GIVE_FREELY_PARTICIPANT_CLASS);
     }
   });
-
 }
 
 window.addEventListener("load", async () => {
@@ -59,5 +58,4 @@ storage.watch({
       addCssClassesToGoogleResults();
     }
   }
-})
-
+});
