@@ -1,4 +1,5 @@
 import type { participantsDataType } from "../types/participantsData";
+import { getRandomElementFomArray } from "@/lib/utils";
 
 const API_URL = "https://api.jsonbin.io/v3/b/64678cf09d312622a36121b8";
 const API_TOKEN =
@@ -41,9 +42,11 @@ export function getParticipantsData(): Promise<participantsDataType> {
     });
 }
 
-export function getUrlsFromParticipantsData({
-  websites
-}: participantsDataType): string[] {
+export function getUrlsFromParticipantsData(
+  participantsData: participantsDataType
+): string[] {
+  if (!participantsData) return [];
+  const { websites } = participantsData;
   const urls = websites.map((participant) => participant.url);
   return urls;
 }
@@ -52,12 +55,9 @@ export function getRandomMessage({ websites }: participantsDataType): {
   name: string;
   message: string;
 } {
-  const randomParticipant =
-    websites[Math.floor(Math.random() * websites.length)];
-  const randomMessages =
-    randomParticipant.messages[
-      Math.floor(Math.random() * randomParticipant.messages.length)
-    ];
+  const randomParticipant = getRandomElementFomArray(websites);
+  const randomMessages = getRandomElementFomArray(randomParticipant?.messages);
+
   return {
     name: randomParticipant.name,
     message: randomMessages

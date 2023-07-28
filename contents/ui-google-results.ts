@@ -1,4 +1,4 @@
-import styleText from "data-text:./google-results-styles.css";
+import styleText from "data-text:./ui-google-results-styles.css";
 import type { PlasmoCSConfig } from "plasmo";
 
 import { Storage } from "@plasmohq/storage";

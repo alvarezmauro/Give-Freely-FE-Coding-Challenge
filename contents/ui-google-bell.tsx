@@ -3,7 +3,6 @@ import "@/style.css";
 import {
   AlertDialog,
   AlertDialogAction,
-  AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
@@ -16,7 +15,7 @@ import { getRandomMessage } from "@/services/participantsData";
 import type { participantsDataType } from "@/types/participantsData";
 import { Bell } from "lucide-react";
 import type { PlasmoCSConfig } from "plasmo";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { useStorage } from "@plasmohq/storage/hook";
 
@@ -30,11 +29,7 @@ const PlasmoOverlay = () => {
   const [participantsData] = useStorage<participantsDataType>(
     StorageKey.ParticipantsData
   );
-
-  useEffect(() => {
-    console.log("participantsData", participantsData);
-  }, [participantsData]);
-
+  
   return (
     <AlertDialog>
       <AlertDialogTrigger

@@ -13,7 +13,7 @@ import type {
   participantsDataType
 } from "@/types/participantsData";
 import { ChevronLeft } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { useStorage } from "@plasmohq/storage/hook";
 
