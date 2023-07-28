@@ -43,7 +43,23 @@ export function getParticipantsData(): Promise<participantsDataType> {
 
 export function getUrlsFromParticipantsData({
   websites
-}: participantsDataType) {
+}: participantsDataType): string[] {
   const urls = websites.map((participant) => participant.url);
   return urls;
+}
+
+export function getRandomMessage({ websites }: participantsDataType): {
+  name: string;
+  message: string;
+} {
+  const randomParticipant =
+    websites[Math.floor(Math.random() * websites.length)];
+  const randomMessages =
+    randomParticipant.messages[
+      Math.floor(Math.random() * randomParticipant.messages.length)
+    ];
+  return {
+    name: randomParticipant.name,
+    message: randomMessages
+  };
 }
