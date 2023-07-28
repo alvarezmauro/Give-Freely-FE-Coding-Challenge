@@ -26,10 +26,6 @@ function IndexPopup() {
     StorageKey.ParticipantsData
   );
 
-  useEffect(() => {
-    console.log("participantsData", participantsData);
-  }, [participantsData]);
-
   return (
     <div
       style={{
