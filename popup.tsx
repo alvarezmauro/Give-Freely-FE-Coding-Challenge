@@ -37,7 +37,7 @@ function IndexPopup() {
       {selectedParticipant == null ? (
         <Table>
           <TableHeader>
-            <TableRow>
+            <TableRow key="participants-header">
               <TableHead className="items-center">
                 Participating Websites
               </TableHead>
@@ -46,6 +46,7 @@ function IndexPopup() {
           <TableBody>
             {participantsData?.websites.map((participantData) => (
               <TableRow
+                key={`participants-header-${participantData.name}`}
                 style={{ cursor: "pointer" }}
                 onClick={() => setSelectedParticipant(participantData)}>
                 <TableCell className="font-medium">
@@ -59,13 +60,13 @@ function IndexPopup() {
         <>
           <Table>
             <TableHeader>
-              <TableRow>
+              <TableRow key="messages-header">
                 <TableHead className="items-center">Messages</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              {selectedParticipant.messages.map((message) => (
-                <TableRow>
+              {selectedParticipant.messages.map((message, index) => (
+                <TableRow key={`messages-header-${index}`}>
                   <TableCell className="font-medium">{message}</TableCell>
                 </TableRow>
               ))}
