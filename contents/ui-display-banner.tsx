@@ -2,7 +2,6 @@ import "@/style.css";
 
 import { StorageKey } from "@/lib/storageKey";
 import { getRandomElementFomArray } from "@/lib/utils";
-import { getUrlsFromParticipantsData } from "@/services/participantsData";
 import type { participantsDataType } from "@/types/participantsData";
 import { useEffect, useState } from "react";
 
@@ -16,11 +15,6 @@ const PlasmoOverlay = () => {
 
   useEffect(() => {
     console.log("participantsData", participantsData);
-
-    const urls = getUrlsFromParticipantsData(participantsData);
-    console.log("urls", urls);
-    console.log(window.location.host);
-
     const messageData = participantsData?.websites.find(
       (website) => website.url === window.location.host
     );
