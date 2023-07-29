@@ -1,11 +1,15 @@
-import "@/style.css";
-
 import { StorageKey } from "@/lib/storageKey";
 import { getRandomElementFomArray } from "@/lib/utils";
 import type { participantsDataType } from "@/types/participantsData";
+import type { PlasmoCSConfig } from "plasmo";
 import { useEffect, useState } from "react";
 
 import { useStorage } from "@plasmohq/storage/hook";
+
+export const config: PlasmoCSConfig = {
+  matches: ["<all_urls>"],
+  all_frames: true
+};
 
 const PlasmoOverlay = () => {
   const [message, setMessage] = useState(null);
@@ -14,7 +18,6 @@ const PlasmoOverlay = () => {
   );
 
   useEffect(() => {
-    console.log("participantsData", participantsData);
     const messageData = participantsData?.websites.find(
       (website) => website.url === window.location.host
     );
@@ -31,7 +34,7 @@ const PlasmoOverlay = () => {
         width: "100%",
         position: "fixed"
       }}>
-      <p style={{textAlign:"center"}}>{message}</p>
+      <p style={{ textAlign: "center" }}>{message}</p>
     </div>
   ) : null;
 };

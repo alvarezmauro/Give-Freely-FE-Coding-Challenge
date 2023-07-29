@@ -1,5 +1,3 @@
-import "@/style.css";
-
 import {
   AlertDialog,
   AlertDialogAction,
@@ -13,23 +11,33 @@ import {
 import { StorageKey } from "@/lib/storageKey";
 import { getRandomMessage } from "@/services/participantsData";
 import type { participantsDataType } from "@/types/participantsData";
+import cssText from "data-text:@/style.css";
 import { Bell } from "lucide-react";
 import type { PlasmoCSConfig } from "plasmo";
 import { useState } from "react";
 
 import { useStorage } from "@plasmohq/storage/hook";
 
+console.log(cssText);
+
 export const config: PlasmoCSConfig = {
   matches: ["https://www.google.com/*"],
   all_frames: true
 };
+
+window.addEventListener("load", async () => {
+  // Add Tailwind CSS
+  const style = document.createElement("style");
+  style.innerHTML = cssText;
+  document.head.appendChild(style);
+});
 
 const PlasmoOverlay = () => {
   const [messageData, setMessageData] = useState(null);
   const [participantsData] = useStorage<participantsDataType>(
     StorageKey.ParticipantsData
   );
-  
+
   return (
     <AlertDialog>
       <AlertDialogTrigger
