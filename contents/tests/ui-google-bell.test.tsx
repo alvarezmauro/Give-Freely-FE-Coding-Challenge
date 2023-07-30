@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 
 import GoogleBell from "../ui-google-bell";
-import { MOCK_PARTICIPANTS_DATA } from "./mocks";
+import { MOCK_PARTICIPANTS_DATA } from "../../lib/mocks";
 
 // Mock @plasmohq/storage/hook
 jest.mock("@plasmohq/storage/hook", () => ({
