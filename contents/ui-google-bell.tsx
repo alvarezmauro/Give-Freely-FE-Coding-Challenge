@@ -34,13 +34,14 @@ const PlasmoOverlay = () => {
   return (
     <AlertDialog>
       <AlertDialogTrigger
+        data-testid="google-bell-button"
         style={{ position: "fixed", right: "1rem", bottom: "1rem" }}
         onClick={() => {
           setMessageData(getRandomMessage(participantsData));
         }}>
         <Bell className="mr-2 h-4 w-4" />
       </AlertDialogTrigger>
-      <AlertDialogContent>
+      <AlertDialogContent data-testid="google-bell-dialog">
         <AlertDialogHeader>
           <AlertDialogTitle>Message</AlertDialogTitle>
           <AlertDialogDescription>
