@@ -56,4 +56,17 @@ describe("ui-display-banner", () => {
     const renderedBanner = await screen.queryByTestId("banner");
     expect(renderedBanner).not.toBeInTheDocument();
   });
+
+  it("Snapshot test", async () => {
+    // mock window.location.host
+    delete window.location;
+    window.location = {
+      host: "www.tripadvisor.com"
+    } as any;
+
+    render(<Banner />);
+
+    const renderedBanner = await screen.queryByTestId("banner");
+    expect(renderedBanner).toMatchSnapshot();
+  });
 });
