@@ -1,28 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 
-import GoogleBell from "./ui-google-bell";
-
-// Data we expect to be returned from getParticipantsData
-export const MOCK_PARTICIPANTS_DATA = {
-  websites: [
-    {
-      name: "TripAdvisor",
-      url: "www.tripadvisor.com",
-      messages: ["Message 1", "Message 2", "Message 3", "Message 4"]
-    },
-    {
-      name: "Uber",
-      url: "www.uber.com",
-      messages: ["Message 1", "Message 2", "Message 3", "Message 4"]
-    },
-    {
-      name: "Amazon",
-      url: "www.amazon.com",
-      messages: ["Message 1", "Message 2", "Message 3", "Message 4"]
-    }
-  ]
-};
+import GoogleBell from "../ui-google-bell";
+import { MOCK_PARTICIPANTS_DATA } from "./mocks";
 
 // Mock @plasmohq/storage/hook
 jest.mock("@plasmohq/storage/hook", () => ({

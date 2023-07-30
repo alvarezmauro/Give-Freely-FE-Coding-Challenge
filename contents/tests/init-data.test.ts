@@ -1,42 +1,17 @@
 import { StorageKey } from "@/lib/storageKey";
 
-import { DEFAULT_PARTICIPANTS_DATA, initData } from "./init-data";
-
-// Data we expect to be stored in storage
-export const MOCK_STORED_PARTICIPANTS_DATA = {
-  websites: [
-    {
-      name: "TripAdvisor",
-      url: "www.tripadvisor.com",
-      messages: ["Message 1", "Message 2", "Message 3", "Message 4"]
-    }
-  ]
-};
-
-// Data we expect to be returned from getParticipantsData
-export const MOCK_PARTICIPANTS_DATA = {
-  websites: [
-    {
-      name: "TripAdvisor",
-      url: "www.tripadvisor.com",
-      messages: ["Message 1", "Message 2", "Message 3", "Message 4"]
-    },
-    {
-      name: "Uber",
-      url: "www.uber.com",
-      messages: ["Message 1", "Message 2", "Message 3", "Message 4"]
-    },
-    {
-      name: "Amazon",
-      url: "www.amazon.com",
-      messages: ["Message 1", "Message 2", "Message 3", "Message 4"]
-    }
-  ]
-};
+import { DEFAULT_PARTICIPANTS_DATA, initData } from "../init-data";
+import { MOCK_PARTICIPANTS_DATA, MOCK_STORED_PARTICIPANTS_DATA } from "./mocks";
 
 // Mock @plasmohq/storage
-const mockStorageGet = jest.fn(() => Promise.resolve(undefined));
-const mockStorageSet = jest.fn();
+const mockStorageGet = jest.fn<
+  Promise<undefined | typeof MOCK_PARTICIPANTS_DATA>,
+  [StorageKey]
+>(() => Promise.resolve(undefined));
+const mockStorageSet = jest.fn<
+  Promise<void>,
+  [StorageKey, typeof DEFAULT_PARTICIPANTS_DATA]
+>();
 jest.mock("@plasmohq/storage", () => {
   return {
     Storage: jest.fn().mockImplementation(() => {
@@ -51,7 +26,9 @@ jest.mock("@plasmohq/storage", () => {
 // Mock @/services/participantsData
 jest.mock("@/services/participantsData", () => {
   return {
-    getParticipantsData: jest.fn(() => Promise.resolve(MOCK_PARTICIPANTS_DATA))
+    getParticipantsData: jest.fn<Promise<typeof MOCK_PARTICIPANTS_DATA>, []>(
+      () => Promise.resolve(MOCK_PARTICIPANTS_DATA)
+    )
   };
 });
 
