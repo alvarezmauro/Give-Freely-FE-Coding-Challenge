@@ -29,6 +29,7 @@ const PlasmoOverlay = () => {
 
   return message ? (
     <div
+      data-testid="banner"
       style={{
         backgroundColor: "rgba(255,255,255,0.8)",
         width: "100%",
