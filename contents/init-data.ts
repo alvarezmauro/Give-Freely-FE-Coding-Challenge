@@ -9,12 +9,12 @@ export const DEFAULT_PARTICIPANTS_DATA = {
     {
       name: "TripAdvisor",
       url: "www.tripadvisor.com",
-      messages: ["Thank you", "Please shop on our site", "sometihng else"]
+      messages: ["Thank you", "Please shop on our site", "something else"]
     },
     {
       name: "Uber",
       url: "www.uber.com",
-      messages: ["Thank you", "Please shop on our site", "sometihng else"]
+      messages: ["Thank you", "Please shop on our site", "something else"]
     }
   ]
 };
