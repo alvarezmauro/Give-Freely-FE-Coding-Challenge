@@ -1,10 +1,10 @@
-import { Storage } from "@plasmohq/storage";
-
-import type { participantsDataType } from "@/types/participantsData";
 import { StorageKey } from "@/lib/storageKey";
 import { getParticipantsData } from "@/services/participantsData";
+import type { participantsDataType } from "@/types/participantsData";
 
-const DEFAULT_PARTICIPANTS_DATA = {
+import { Storage } from "@plasmohq/storage";
+
+export const DEFAULT_PARTICIPANTS_DATA = {
   websites: [
     {
       name: "TripAdvisor",
@@ -19,7 +19,7 @@ const DEFAULT_PARTICIPANTS_DATA = {
   ]
 };
 
-window.addEventListener("load", async () => {
+export const initData = async () => {
   const storage = new Storage();
   const participantsData: participantsDataType | undefined = await storage.get(
     StorageKey.ParticipantsData
@@ -35,4 +35,8 @@ window.addEventListener("load", async () => {
   } catch (error) {
     console.log(error);
   }
+};
+
+window.addEventListener("load", async () => {
+  initData();
 });
