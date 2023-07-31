@@ -1,7 +1,10 @@
+import { DEFAULT_PARTICIPANTS_DATA, initData } from "@/contents/init-data";
 import { StorageKey } from "@/lib/storageKey";
 
-import { DEFAULT_PARTICIPANTS_DATA, initData } from "../init-data";
-import { MOCK_PARTICIPANTS_DATA, MOCK_STORED_PARTICIPANTS_DATA } from "../../lib/mocks";
+import {
+  MOCK_PARTICIPANTS_DATA,
+  MOCK_STORED_PARTICIPANTS_DATA
+} from "./mocks/dataMocks";
 
 // Mock @plasmohq/storage
 const mockStorageGet = jest.fn<

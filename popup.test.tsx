@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 
-import { MOCK_PARTICIPANTS_DATA } from "./lib/mocks";
+import { MOCK_PARTICIPANTS_DATA } from "./tests/mocks/dataMocks";
 import Popup from "./popup";
 
 // Mock @plasmohq/storage/hook

@@ -1,7 +1,7 @@
+import Banner from "@/contents/ui-display-banner";
 import { render, screen } from "@testing-library/react";
 
-import Banner from "../ui-display-banner";
-import { MOCK_PARTICIPANTS_DATA } from "../../lib/mocks";
+import { MOCK_PARTICIPANTS_DATA } from "./mocks/dataMocks";
 
 // Mock @plasmohq/storage/hook
 jest.mock("@plasmohq/storage/hook", () => ({

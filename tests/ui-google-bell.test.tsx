@@ -1,8 +1,8 @@
+import GoogleBell from "@/contents/ui-google-bell";
 import { render, screen } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 
-import GoogleBell from "../ui-google-bell";
-import { MOCK_PARTICIPANTS_DATA } from "../../lib/mocks";
+import { MOCK_PARTICIPANTS_DATA } from "./mocks/dataMocks";
 
 // Mock @plasmohq/storage/hook
 jest.mock("@plasmohq/storage/hook", () => ({
@@ -32,12 +32,12 @@ describe("ui-google-bell", () => {
     );
     // Click on the bell button
     await act(async () => {
-        // Click on the bell button
-        await renderedGoogleBellButton.click();
-      });
+      // Click on the bell button
+      await renderedGoogleBellButton.click();
+    });
     // Check if the dialog is rendered
     const renderedGoogleBellDialog = await screen.queryByTestId(
-        "google-bell-dialog"
+      "google-bell-dialog"
     );
     expect(renderedGoogleBellDialog).toBeInTheDocument();
   });
