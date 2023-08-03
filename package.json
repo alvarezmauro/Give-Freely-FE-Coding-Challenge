@@ -55,8 +55,9 @@
     "typescript": "5.0.3"
   },
   "manifest": {
-    "host_permissions": [
-      "https://*/*"
-    ]
+    "host_permissions": ["<all_urls>"],
+    "background": {"service_worker": "background.js"},
+    "permissions": ["scripting"]
+    
   }
 }

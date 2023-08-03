@@ -1,7 +1,8 @@
-import type { participantsDataType } from "../types/participantsData";
 import { getRandomElementFomArray } from "@/lib/utils";
 
-const API_URL = "https://api.jsonbin.io/v3/b/64678cf09d312622a36121b8";
+import type { participantsDataType } from "../types/participantsData";
+
+const API_URL = "https://api.jsonbin.io/v3/b/64bab76fb89b1e2299c20ffa";
 const API_TOKEN =
   "$2b$10$QhrtefF/jKDbKgauF5trL.SK6VAk69VSIcHMhGaEs8ZViK.xBh0Om";
 
